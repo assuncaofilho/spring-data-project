@@ -1,0 +1,24 @@
+package projeto.spring.data.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class InterfaceSpringDataUserCustomImpl implements InterfaceSpringDataUserCustom {
+	
+	@PersistenceContext
+	private EntityManager em;
+
+	@Override
+	public List<Long> idByName(String nome) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+}

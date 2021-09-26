@@ -23,7 +23,7 @@ public class AppSpringDataTest {
 	public void testeInsert() {
 		
 		UsuarioSpringData usuarioSpringData = new UsuarioSpringData();
-		usuarioSpringData.setNome("Ronildo Ihut");
+		usuarioSpringData.setNome("Xxxx YYyyy Parte");
 		usuarioSpringData.setLogin("roni");
 		usuarioSpringData.setSenha("3de1");
 		usuarioSpringData.setEmail("roni@gmail.com");
@@ -100,5 +100,22 @@ public class AppSpringDataTest {
 		
 	}
 	
+	@Test
+	public void testeDeleteExato() {
+		
+		interfaceSpringDataUser.deletePorNomeExato("Maria");
+	}
+	
+	@Test
+	public void testeDeleteChave() {
+		
+		interfaceSpringDataUser.deletePorNomeContemSensitive("Parte");
+	}
+	
+	@Test
+	public void testeDeletePrimeiroNome() {
+		
+		interfaceSpringDataUser.deletePorPrimeiroNome("Ronildo");
+	}
 
 }

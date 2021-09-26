@@ -1,0 +1,51 @@
+package projeto.spring.data.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import projeto.spring.data.model.UsuarioSpringData;
+
+@Service
+@Transactional
+public class InterfaceSpringDataUserCustomImpl implements InterfaceSpringDataUserCustom {
+	
+	@PersistenceContext
+	private EntityManager em;
+	
+	
+	@Override
+	public List<Long> idByName(String nome) {
+		
+		//CriteriaBuilder cb = em.getCriteriaBuilder();
+		//CriteriaQuery<UsuarioSpringData> q = cb.createQuery(UsuarioSpringData.class);
+		
+		Criteria crit = em.unwrap(Session.class).createCriteria(UsuarioSpringData.class);
+		
+		List<UsuarioSpringData> lista = crit.add(Restrictions.ilike("nome", nome, MatchMode.ANYWHERE)).list();
+		
+		List<Long> listaids = new ArrayList<Long>();
+		
+		for (UsuarioSpringData usuarioSpringData : lista) {
+			
+			
+			Long id = usuarioSpringData.getId();
+			listaids.add(id);
+		}
+	
+		
+		return listaids;
+	}
+
+
+
+}

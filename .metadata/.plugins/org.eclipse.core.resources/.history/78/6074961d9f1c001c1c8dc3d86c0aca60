@@ -1,0 +1,21 @@
+package projeto.spring.data.dao;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import projeto.spring.data.model.UsuarioSpringData;
+
+@Repository
+public interface InterfaceSpringDataUser extends CrudRepository<UsuarioSpringData, Long>{
+	
+	@Query(value = "select u from UsuarioSpringData u where lower(u.nome) like lower(concat('%',?1,'%'))") //jpql
+	public List<UsuarioSpringData> buscaPorParteNome (String nome);
+	
+	@Query("select u from User u where lower(u.name) like lower(concat('%', :nameToFind,'%'))")
+	public List<UsuarioSpringData> findByNameFree(@Param("nameToFind") String name);
+
+}

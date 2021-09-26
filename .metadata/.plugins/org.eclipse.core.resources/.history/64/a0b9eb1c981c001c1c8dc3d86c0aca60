@@ -1,0 +1,9 @@
+package projeto.spring.data.dao;
+
+import java.util.List;
+
+public interface InterfaceSpringDataUserCustom {
+	
+	List<Long> idByName(String nome); /*Método que irá retornar os ID's de usuários com determinado padrão de nome*/ 
+
+}
