@@ -85,6 +85,12 @@ public class AppSpringDataTest {
 	}
 	
 	@Test
+	public void testeDeleteCriteria() {
+		
+		
+	}
+	
+	@Test
 	public void testeConsultaNome() {
 		
 		List<UsuarioSpringData> lista = interfaceSpringDataUser.buscaPorNomeParam("Roberto Carlos");
@@ -116,6 +122,18 @@ public class AppSpringDataTest {
 	public void testeDeletePrimeiroNome() {
 		
 		interfaceSpringDataUser.deletePorPrimeiroNome("Ronildo");
+	}
+	
+	@Test
+	public void testeListarByCriteria() {
+		
+		List<Object[]> lista = interfaceSpringDataUser.dadosUser();
+		
+		for (Object[] objects : lista) {
+			System.out.println("ID: " + objects[0].toString());
+			System.out.println("NOME: " + objects[1].toString());
+			System.out.println("--------------------------------");
+		}
 	}
 
 }

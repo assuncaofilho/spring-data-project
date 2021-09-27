@@ -1,0 +1,7 @@
+package projeto.spring.data.dao;
+
+public interface DataUserCustom {
+	
+	public List<Object[]> dadosUser(String nome);
+
+}

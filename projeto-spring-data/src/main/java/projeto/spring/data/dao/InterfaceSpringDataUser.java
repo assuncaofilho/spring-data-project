@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import projeto.spring.data.model.UsuarioSpringData;
 
 @Repository
-public interface InterfaceSpringDataUser extends CrudRepository<UsuarioSpringData, Long>{
+public interface InterfaceSpringDataUser extends CrudRepository<UsuarioSpringData, Long>, DataUserCustom{
 	
 	/*Contém o valor porém no-sensitive*/
 	@Query(value = "select u from UsuarioSpringData u where lower(u.nome) like lower(concat('%',?1,'%'))") //jpql
@@ -49,6 +49,8 @@ public interface InterfaceSpringDataUser extends CrudRepository<UsuarioSpringDat
 	@Transactional
 	@Query(value = "delete from UsuarioSpringData u where u.nome like concat(:nameToDelete, '%')")
 	public void deletePorPrimeiroNome(@Param("nameToDelete") String nome);
+	
+	
 	
 
 }
